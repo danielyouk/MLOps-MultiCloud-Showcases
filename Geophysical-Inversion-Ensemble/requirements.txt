@@ -1,0 +1,33 @@
+# This file specifies the python packages needed for the Azure ML environment.
+
+# Tell pip where to find the correct PyTorch version for CUDA 11.3
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.3.1
+torchvision==0.18.1
+torchaudio==2.3.1
+
+# Data and ML
+numpy
+pandas
+scikit-learn
+tqdm
+
+# Azure ML SDK
+azure-ai-ml
+azure-identity
+
+# Visualization and Notebooks
+matplotlib
+seaborn
+tensorboard
+notebook
+ipykernel
+pillow
+kaggle
+
+# Backbone models
+timm
+monai
+
+# Add MLflow for metric logging
+mlflow-skinny

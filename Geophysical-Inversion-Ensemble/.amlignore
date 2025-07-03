@@ -1,0 +1,25 @@
+# .amlignore
+
+# Ignore the virtual environment
+.venv/
+
+# Ignore git history and other git files
+.git/
+.gitignore
+
+# Ignore IDE settings
+.vscode/
+
+# Ignore python cache folders
+__pycache__/
+src/__pycache__/
+
+# Exclude large data and output folders
+data/
+outputs/
+logs/
+dummy_dataset/
+
+# Exclude documentation and other non-code files
+*.md
+LICENSE

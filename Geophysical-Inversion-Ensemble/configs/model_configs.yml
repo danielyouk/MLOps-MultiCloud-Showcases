@@ -1,0 +1,138 @@
+# configs/model_configs.yml
+# This file defines the portfolio of models for the training experiments.
+
+# --- Group 1: CAFormer Family ---
+caformer_b36:
+  model_name: caformer_b36.sail_in22k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+caformer_s36:
+  model_name: caformer_s36.sail_in22k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+caformer_s18:
+  model_name: caformer_s18.sail_in22k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+# --- Group 2: ConvNeXt Family ---
+convnext_base:
+  model_name: convnext_base.fb_in22k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+convnext_large:
+  model_name: convnext_large.fb_in22k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 4
+  compute_target: my-2-node-powerful-cluster
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+convnext_tiny:
+  model_name: convnext_tiny.fb_in22k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 32
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+convnextv2_base:
+  model_name: convnextv2_base.fcmae_ft_in22k_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+convnextv2_atto:
+  model_name: convnextv2_atto.fcmae_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+  
+# --- Group 3: Hybrid Architectures ---
+maxvit_base:
+  model_name: maxvit_base_tf_512.in21k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+coatnet_2:
+  model_name: coatnet_2_rw_224
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+coatnext_nano:
+  model_name: coatnext_nano_rw_224.sw_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+# --- Group 4: Efficient & Vision Transformers ---
+efficientnetv2_l:
+  model_name: tf_efficientnetv2_l.in21k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 16
+  compute_target: my-2-node-powerful-cluster
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+mobilenetv3_large:
+  model_name: mobilenetv3_large_100.miil_in21k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 32
+  compute_target: my-2-node-powerful-cluster
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+vit_base:
+  model_name: vit_base_patch16_224.augreg_in21k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+
+vit_small:
+  model_name: vit_small_patch16_224.augreg_in21k_ft_in1k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+  
+# --- Group 5: Wildcard ---
+eva02_base:
+  model_name: eva02_base_patch14_224.mim_in22k
+  learning_rate: 0.0001
+  batch_size: 8
+  num_epochs: 100
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001

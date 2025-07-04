@@ -30,4 +30,8 @@ timm
 monai
 
 # Add MLflow for metric logging
-mlflow-skinny
+# We need the full mlflow package and the azureml-mlflow integration
+# to ensure metrics are correctly logged to the Azure ML workspace.
+# mlflow-skinny does not include the necessary cloud provider plugins.
+mlflow
+azureml-mlflow

@@ -247,11 +247,12 @@ class Trainer:
                 print(f"Epoch {epoch} - Train(MSE): {train_loss_mse:.4f} | Val(MSE): {val_loss_mse:.4f} | Val(MAE): {val_loss_mae:.4f} | LR: {current_lr:.6f}")
                 
                 try:
-                    with mlflow.start_run(nested=True):
-                        mlflow.log_metric("train_loss_mse", train_loss_mse, step=epoch)
-                        mlflow.log_metric("validation_loss_mse", val_loss_mse, step=epoch)
-                        mlflow.log_metric("validation_loss_mae", val_loss_mae, step=epoch)
-                        mlflow.log_metric("learning_rate", current_lr, step=epoch)
+                    # When running inside an Azure ML job, MLflow is already configured.
+                    # We should log to the active run, not create a new nested one.
+                    mlflow.log_metric("train_loss_mse", train_loss_mse, step=epoch)
+                    mlflow.log_metric("validation_loss_mse", val_loss_mse, step=epoch)
+                    mlflow.log_metric("validation_loss_mae", val_loss_mae, step=epoch)
+                    mlflow.log_metric("learning_rate", current_lr, step=epoch)
                     print("--> Successfully logged metrics to Azure ML.")
                 except Exception as e:
                     print(f"--> WARNING: Could not log metrics to MLflow: {e}")

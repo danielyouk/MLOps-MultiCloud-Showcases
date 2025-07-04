@@ -2,6 +2,7 @@
 An advanced showcase of end-to-end MLOps pipelines deployed across AWS, Azure, and GCP. This project demonstrates automated, scalable, and parallelized machine learning workflows, from data ingestion to model serving, for a variety of models including LLMs, Neural Networks, and classical ML
 
 # Project Structure
+```text
 MLOps-Portfolio/
 ├── .gitignore              # ✅ A single gitignore at the root for all projects
 
@@ -43,3 +44,4 @@ MLOps-Portfolio/
     └── tests/                    # For all testing and validation scripts
         ├── __init__.py
         └── sanity_check_all_models.py # Your script to test models locally
+```

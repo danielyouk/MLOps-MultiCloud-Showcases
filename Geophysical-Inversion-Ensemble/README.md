@@ -14,7 +14,7 @@ The core philosophy of this project is **"Local-First, CLI-Driven, and Cost-Awar
 
 | 1. Intelligent Job Orchestration | 2. Before: Training Failure | 3. After: Resilient Recovery |
 | :---: | :---: | :---: |
-| ![Cluster Scaling GIF](C:\Users\DTman\MLOps-MultiCloud-Showcases\Geophysical-Inversion-Ensemble\assets\test.gif) | ![Failed Training Graph](./assets/failed_graph_placeholder.png) | ![Resumed Training Graph](./assets/resumed_graph_placeholder.png) |
+| ![Cluster Scaling GIF](./assets/test.gif) | ![Failed Training Graph](./assets/failed_graph_placeholder.png) | ![Resumed Training Graph](./assets/resumed_graph_placeholder.png) |
 | *Our script intelligently assigns jobs to different compute clusters based on model size, optimizing both cost and performance.* | *Without our solution, a spot instance preemption means all training progress is lost.* | *Our pipeline automatically resumes training from the last checkpoint, saving time and money.* |
 
 ---

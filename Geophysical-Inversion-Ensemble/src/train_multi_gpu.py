@@ -68,10 +68,20 @@ def create_base_model(model_name):
 def download_snapshot_from_previous_run(experiment_name, output_dir):
     """
     Finds the most recent completed or failed run in the same experiment
-    and downloads its training snapshot if one exists. This is robust
-    for preempted spot instances.
+    and downloads its training snapshot if one exists. This is the core
+    mechanism that makes training on volatile spot instances robust.
+
+    When a spot instance is preempted, the Azure ML job is marked as 'Failed'.
+    When a new instance starts up for the same job, this function is called.
+    It authenticates with Azure ML, searches for the *previous* run with the
+    same experiment name, and if it finds one that is 'Failed' or 'Canceled',
+    it attempts to download the 'training_snapshot.pt' artifact from that
+    run. This allows the new job to resume training exactly where the old
+    one left off, saving significant time and money.
     """
     try:
+        # Use DefaultAzureCredential for authentication, which is robust in ML Jobs.
+        # It automatically handles managed identity authentication within Azure.
         ml_client = MLClient.from_config(credential=DefaultAzureCredential(exclude_shared_cache_credential=True))
         current_run_id = os.environ.get("AZUREML_RUN_ID")
 
@@ -171,6 +181,12 @@ class Trainer:
             self._load_snapshot(snapshot_to_load)
 
     def _load_snapshot(self, snapshot_path):
+        """
+        Loads a comprehensive training snapshot. It restores not just the model's
+        weights, but also the state of the optimizer, the learning rate
+        scheduler, the number of epochs already run, and the state of the
+        early stopping counter. This ensures training resumes exactly.
+        """
         loc = f"cuda:{self.gpu_id}"
         snapshot = torch.load(snapshot_path, map_location=loc)
         self.model.module.load_state_dict(snapshot["MODEL_STATE"])
@@ -182,6 +198,17 @@ class Trainer:
         print(f"✅ Resuming training from epoch {self.epochs_run}")
 
     def _save_snapshot(self, epoch):
+        """
+        Saves a comprehensive training snapshot. This is more than a simple
+        model checkpoint. It includes all components needed for a perfect resume:
+        - Model state_dict
+        - Optimizer state_dict
+        - LR Scheduler state_dict
+        - The epoch number
+        - Early stopping state (best loss and patience counter)
+        This snapshot is saved to the job's output directory, which allows it
+        to be retrieved by subsequent jobs if this one is preempted.
+        """
         if self.gpu_id != 0: return
         os.makedirs(self.snapshot_dir, exist_ok=True)
         snapshot = {

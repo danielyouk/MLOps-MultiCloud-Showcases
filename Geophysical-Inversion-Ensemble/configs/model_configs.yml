@@ -1,5 +1,21 @@
 # configs/model_configs.yml
 # This file defines the portfolio of models for the training experiments.
+# Each top-level key represents a unique experiment or model variant that will be
+# submitted as a distinct job to Azure ML.
+#
+# The orchestrator script (`scripts/train_all_models.py`) reads this file
+# and launches one job for each model defined below.
+#
+# --- Key Parameters ---
+# model_name: The specific model architecture from the timm library.
+# learning_rate: The initial learning rate for the optimizer.
+# batch_size: The number of samples per batch. Adjust based on GPU memory.
+# num_epochs: The maximum number of epochs for training.
+# early_stopping_patience: Number of epochs with no improvement to wait before stopping.
+# early_stopping_min_delta: Minimum change in validation loss to be considered an improvement.
+# compute_target: (Optional) Specify a specific Azure ML compute cluster for this job.
+#                 If omitted, the default cluster from the orchestrator script is used.
+#                 This is useful for assigning larger models to more powerful GPUs.
 
 # --- Group 1: CAFormer Family ---
 caformer_b36:

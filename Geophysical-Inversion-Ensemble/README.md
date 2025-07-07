@@ -37,22 +37,26 @@ This project follows the standard architecture defined in the main portfolio. He
 
 ```text
 Geophysical-Inversion-Ensemble/
-├── README.md               # You are here!
-├── requirements.txt        # All Python packages needed for this project
+├── README.md
+├── requirements.txt
 │
 ├── configs/
-│   └── model_configs.yml     # Defines the model portfolio and all hyperparameters
+│   └── model_configs.yml
 │
-├── data/                   # (Ignored by git) For local data files
-│   └── geo_aware_splits.json # Defines data splits without duplicating source data
+├── data/
+│   └── geo_aware_splits.json
+│
+├── dummy_dataset/          # (Ignored by git) Holds sample data for local testing
 │
 ├── outputs/                # (Ignored by git) For local outputs like models or logs
 │
 ├── scripts/
-│   ├── check_jobs.py         # Checks status of Azure ML jobs
-│   ├── create_file_splits.py # Generates data splits for ensemble training
-│   ├── run_azureml.py        # Submits a single job to Azure (used by the orchestrator)
-│   └── train_all_models.py   # The main orchestrator you run locally
+│   ├── create_dummy_data_set.py # Creates the local test dataset
+│   ├── sanity_check_all_models.py # Runs a pre-flight check on all models locally
+│   ├── create_file_splits.py
+│   ├── train_all_models.py
+│   ├── check_jobs.py
+│   └── run_azureml.py
 │
 └── src/
     ├── data_utils.py       # Utility functions for data handling
@@ -139,7 +143,7 @@ This two-step process is crucial for catching errors locally before they waste c
 
 **A. Create a Local Test Dataset**
 
-First, generate a small, structurally-correct sample dataset. This script creates it in the `dummy_dataset/` folder. While named "dummy", this data is vital for ensuring the entire data loading and model pipeline works correctly on your local machine.
+First, generate a small, structurally-correct sample dataset for local testing. This script creates it in the `dummy_dataset/` folder. This data is vital for ensuring the entire data loading and model pipeline works correctly on your local machine before moving to the cloud.
 
 ```bash
 python scripts/create_dummy_data_set.py
@@ -147,7 +151,7 @@ python scripts/create_dummy_data_set.py
 
 **B. Run the Sanity Check**
 
-Now, run the sanity check script. It will automatically use the dataset created in the previous step to perform a full, end-to-end test on every model defined in `configs/model_configs.yml`.
+Now, run the sanity check script. It will automatically use the dataset created in the `dummy_dataset/` folder to perform a full, end-to-end test on every model defined in `configs/model_configs.yml`. This catches potential bugs in model instantiation, data loading, and forward passes.
 
 ```bash
 python scripts/sanity_check_all_models.py

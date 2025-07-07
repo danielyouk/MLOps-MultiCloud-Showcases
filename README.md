@@ -22,10 +22,27 @@ A resilient, scalable pipeline for training a large ensemble of deep learning mo
 ➡️ **[View Project Details](./Geophysical-Inversion-Ensemble/README.md)**
 
 ---
-### 2. (Coming Soon) LLM Fine-Tuning and Serving (AWS)
-*   **☁️ Cloud:** `Amazon Web Services`
-*   **⚙️ Key Technologies:** `AWS SageMaker`, `LLMs`, `Serverless Inference`
-*   **✨ Highlights:** ...
+
+## ✨ Showcase in Action: Geophysical Inversion on Azure
+
+Here is a visual summary of the key outcomes from the first showcase project, demonstrating the core MLOps principles of automation and resilience in action.
+
+### 1. Intelligent Job Orchestration & Scaling
+
+Our orchestrator script reads the model configurations and intelligently assigns jobs to different compute clusters based on their requirements. With a single command, it can scale up multiple clusters to run the entire experiment portfolio in parallel, optimizing for both cost and performance.
+
+![Intelligent Job Orchestration](./Geophysical-Inversion-Ensemble/assets/intelligent_orchestration.gif)
+
+---
+
+### 2. The Spot Instance Challenge: Before vs. After
+
+The core value of this pipeline is its ability to handle spot instance preemptions gracefully.
+
+| Before: Training Failure | After: Resilient Recovery |
+| :---: | :---: |
+| ![Failed Training Graph](./Geophysical-Inversion-Ensemble/assets/failed_graph_placeholder.png) | ![Resumed Training Graph](./Geophysical-Inversion-Ensemble/assets/resumed_graph_placeholder.png) |
+| *Without our solution, a preemption means all training progress is lost, wasting hours of compute time.* | *Our pipeline automatically resumes training from the last checkpoint, turning a catastrophic failure into a minor delay.* |
 
 ---
 

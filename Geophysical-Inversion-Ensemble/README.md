@@ -12,10 +12,22 @@ The core philosophy of this project is **"Local-First, CLI-Driven, and Cost-Awar
 
 ## ✨ Visual Highlights
 
-| 1. Intelligent Job Orchestration | 2. Before: Training Failure | 3. After: Resilient Recovery |
-| :---: | :---: | :---: |
-| ![Cluster Scaling GIF](./assets/intelligent_orchestration.gif.gif) | ![Failed Training Graph](./assets/spot_discount_restart.png) | ![Resumed Training Graph](./assets/resumed_graph_placeholder.png) |
-| *Our script intelligently assigns jobs to different compute clusters based on model size, optimizing both cost and performance.* | *Without our solution, a spot instance preemption means all training progress is lost.* | *Our pipeline automatically resumes training from the last checkpoint, saving time and money.* |
+### 1. Intelligent Job Orchestration & Scaling
+
+Our orchestrator script reads the model configurations and intelligently assigns jobs to different compute clusters based on their requirements. With a single command, it can scale up multiple clusters to run the entire experiment portfolio in parallel, optimizing for both cost and performance.
+
+![Intelligent Job Orchestration](./assets/intelligent_orchestration.gif)
+
+---
+
+### 2. The Spot Instance Challenge: Before vs. After
+
+The core value of this pipeline is its ability to handle spot instance preemptions gracefully.
+
+| Before: Training Failure | After: Resilient Recovery |
+| :---: | :---: |
+| ![Failed Training Graph](./assets/failed_graph_placeholder.png) | ![Resumed Training Graph](./assets/resumed_graph_placeholder.png) |
+| *Without our solution, a preemption means all training progress is lost, wasting hours of compute time.* | *Our pipeline automatically resumes training from the last checkpoint, turning a catastrophic failure into a minor delay.* |
 
 ---
 

@@ -21,6 +21,11 @@ A resilient, scalable pipeline for training a large ensemble of deep learning mo
 
 ➡️ **[View Project Details](./Geophysical-Inversion-Ensemble/README.md)**
 
+### 2. (Coming Soon) LLM Fine-Tuning and Serving (AWS)
+*   **☁️ Cloud:** `Amazon Web Services`
+*   **⚙️ Key Technologies:** `AWS SageMaker`, `LLMs`, `Serverless Inference`
+*   **✨ Highlights:** ...
+
 ---
 
 ## ✨ Showcase in Action: Geophysical Inversion on Azure
@@ -32,8 +37,6 @@ Here is a visual summary of the key outcomes from the first showcase project, de
 Our orchestrator script reads the model configurations and intelligently assigns jobs to different compute clusters based on their requirements. With a single command, it can scale up multiple clusters to run the entire experiment portfolio in parallel, optimizing for both cost and performance.
 
 ![Intelligent Job Orchestration](./Geophysical-Inversion-Ensemble/assets/intelligent_orchestration.gif)
-
----
 
 ### 2. The Spot Instance Challenge: Before vs. After
 

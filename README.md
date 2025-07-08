@@ -81,5 +81,3 @@ MLOps-MultiCloud-Showcases/
     *   A critical principle in this portfolio is to **avoid redundant data copies**. The `data/` directory holds small definition files (like a JSON "shopping list"), not the large datasets themselves.
     *   The large data files are stored once in a central cloud storage location. The "shopping list" simply *points* to the specific data files required for a run.
     *   This dramatically saves on storage costs, network overhead, and job startup times, especially when running dozens of experiments in parallel.
- 
-### test fetch
